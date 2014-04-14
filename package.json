@@ -1,0 +1,15 @@
+{
+  "name": "duckling",
+  "version": "0.0.0",
+  "description": "A duck typing library I can use with a switch statement.",
+  "main": "./lib/duckling.js",
+  "scripts": {
+    "test": "cake test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gh:antisocialmunky/duckling.git"
+  },
+  "author": "David Tai",
+  "license": "ISC"
+}
