@@ -1,5 +1,5 @@
 #Introduction
-A duck-type library that I can use with a switch statement.
+A duck-type enumeration library that I can use with a switch statement.
 
 #Duckling
 **noun**
