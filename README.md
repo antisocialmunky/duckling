@@ -49,7 +49,7 @@ StaticType = duckling.type('Position').check(hasPosition).check(hasSprite)
 
 update = (objects) ->
   for object in objects
-    switch(object._type)
+    switch object._type
       when ActorType.type
         #move sprite by adding velocity to position
         #do collision detection
