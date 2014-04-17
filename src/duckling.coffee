@@ -6,6 +6,7 @@ Duckling =
   clear: ()->
     Duckling.types = {}
     Duckling.classes.length = 0
+    typeId = 0
   classify: (clas)->
     for name, type of Duckling.types
       if type.predicate? && type.predicate(clas.prototype)
@@ -18,10 +19,11 @@ Duckling =
     for clas in Duckling.classes
       Duckling.classify(clas)
   Type: class Type
-    id: typeId++
+    id: 0
     name: ''
     predicate: null
     constructor: (name)->
+      @id = typeId++
       @name = name
       Duckling.types[name] = @
     check: (predicate)->
