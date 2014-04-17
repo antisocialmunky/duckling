@@ -1,5 +1,25 @@
 typeId = 0
 
+class Type
+  id: 0
+  name: ''
+  predicate: null
+  constructor: (name)->
+    @id = typeId++
+    @name = name
+    Duckling.types[name] = @
+  check: (predicate)->
+    if typeof predicate == 'function'
+      oldPredicate = @predicate
+      if oldPredicate?
+        newPredicate = (clas) ->
+          return predicate(clas) && oldPredicate(clas)
+        @predicate = newPredicate
+      else
+        @predicate = predicate
+    Duckling.reclassify()
+    return @
+
 Duckling = 
   types: {}
   classes: []
@@ -18,24 +38,7 @@ Duckling =
   reclassify: ()->
     for clas in Duckling.classes
       Duckling.classify(clas)
-  Type: class Type
-    id: 0
-    name: ''
-    predicate: null
-    constructor: (name)->
-      @id = typeId++
-      @name = name
-      Duckling.types[name] = @
-    check: (predicate)->
-      if typeof predicate == 'function'
-        oldPredicate = @predicate
-        if oldPredicate?
-          newPredicate = (clas) ->
-            return predicate(clas) && oldPredicate(clas)
-          @predicate = newPredicate
-        else
-          @predicate = predicate
-      Duckling.reclassify()
-      return @
+  type: (name)->
+    return new Type(name)
 
 module.exports = Duckling if module?

@@ -5,7 +5,7 @@ describe 'duckling.Type', ->
   it 'should construct with a name', ->
     duckling.clear()
 
-    type = new duckling.Type('type')
+    type = duckling.type('type')
     type.name.should.equal 'type'
     type.should.equal duckling.types['type']
 
@@ -13,7 +13,7 @@ describe 'duckling.Type', ->
     duckling.clear()
 
     hasChecked = false
-    type = new duckling.Type('Position')
+    type = duckling.type('Position')
       .check((clas)->
         hasChecked = true
         return clas.x? && clas.y?)
@@ -31,7 +31,7 @@ describe 'duckling.Type', ->
   it 'should clear correctly', ->
     duckling.clear()
 
-    type = new duckling.Type('Position')
+    type = duckling.type('Position')
       .check((clas)->
         hasChecked = true
         return clas.x? && clas.y?)
@@ -56,12 +56,12 @@ describe 'duckling.Type', ->
     hasChecked1 = false
     hasChecked2 = false
 
-    type1 = new duckling.Type('a1')
+    type1 = duckling.type('a1')
       .check((clas)->
         hasChecked1 = true
         return clas.a?)
 
-    type2 = new duckling.Type('a2')
+    type2 = duckling.type('a2')
       .check((clas)->
         hasChecked2 = true
         return clas.a?)
@@ -79,11 +79,11 @@ describe 'duckling.Type', ->
   it 'should classify and not classify', ->
     duckling.clear()
 
-    type1 = new duckling.Type('!a')
+    type1 = duckling.type('!a')
       .check((clas)->
         return !clas.a?)
 
-    type2 = new duckling.Type('a')
+    type2 = duckling.type('a')
       .check((clas)->
         return clas.a?)
     
@@ -98,11 +98,11 @@ describe 'duckling.Type', ->
   it 'should fullfill my usecase!', ->
     duckling.clear()
 
-    type1 = new duckling.Type('!a')
+    type1 = duckling.type('!a')
       .check((clas)->
         return !clas.a?)
 
-    type2 = new duckling.Type('a')
+    type2 = duckling.type('a')
       .check((clas)->
         return clas.a?)
     
